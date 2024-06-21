@@ -1,0 +1,61 @@
+---
+title: "Data For The Golf Project"
+execute: 
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+library(tidyverse)
+library(tutorial.helpers)
+```
+
+```{r}
+golf_data <- read_csv("dg_course_table.csv")
+golf_data
+```
+
+```{r}
+ggplot(golf_data, aes(x = yardage, y = adj_score_to_par)) +
+  geom_point() +
+  geom_smooth(method = "loess", col = "blue", se = FALSE) +
+  labs(title = "Correlation between Yardage and Adjusted Score to Par",
+       x = "Yardage",
+       y = "Adjusted Score to Par") +
+  theme_minimal()
+```
+
+```{r}
+ggplot(golf_data, aes(x = adj_driving_distance, 
+                      y = adj_score_to_par)) +
+  geom_point() +
+  geom_smooth(method = "loess", col = "blue", se = FALSE) +
+  labs(title = "Correlation between Driving Distance and Adjusted Score to Par",
+       x = "Driving Distance",
+       y = "Adjusted Score to Par") +
+  theme_minimal()
+```
+
+```{r}
+ggplot(golf_data, aes(x = adj_driving_accuracy, 
+                      y = adj_score_to_par)) +
+  geom_point() +
+  geom_smooth(method = "loess", col = "blue", se = FALSE) +
+  labs(title = "Correlation between Driving Accuracy and Adjusted Score to Par",
+       x = "Driving Accuracy",
+       y = "Adjusted Score to Par") +
+  theme_minimal()
+```
+
+```{r}
+ggplot(golf_data, aes(x = putt_sg, 
+                      y = adj_score_to_par)) +
+  geom_point() +
+  geom_smooth(method = "loess", col = "blue", se = FALSE) +
+  labs(title = "Correlation between Putting Skills and Adjusted Score to Par",
+       x = "Putting Skills",
+       y = "Adjusted Score to Par") +
+  theme_minimal()
+```
+
